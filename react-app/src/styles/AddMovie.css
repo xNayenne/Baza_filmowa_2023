@@ -1,0 +1,83 @@
+.main-box {
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 50px;
+  color: #000;
+}
+
+.main-box_2 {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 50px;
+  color: #000;
+}
+
+.add-movie-container {
+  text-align: center;
+}
+
+h2 {
+  color: #de005d;
+}
+
+.form-add-movie {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-global {
+  margin-top: 20px;
+}
+
+p {
+  margin-top: 10px;
+  color: #ddd;
+}
+
+.input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: #000;
+}
+
+textarea {
+  width: 99.5%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: #000;
+  margin-left: -10px;
+}
+
+button {
+  background-color: #de005d;
+  color: #fff;
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-right: -10px;
+  margin-left:-10px;
+}
+
+button:hover {
+  background-color: #ff5286;
+}
+
+.login-link-text-gray {
+  color: #555;
+}

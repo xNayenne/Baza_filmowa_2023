@@ -1,0 +1,59 @@
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image: linear-gradient(to right, rgba(23, 23, 23, 0), #171717 95%), url('https://wallpapercave.com/wp/wp12389554.jpg');
+  background-color: #171717;
+  background-size: 125% auto;
+  background-repeat: no-repeat;
+  background-fit: cover;
+  background-position: 170% 100%;
+  background-attachment: fixed;
+  color: #fff;
+}
+
+.main {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image: linear-gradient(to right, rgba(23, 23, 23, 0), #171717 95%), url('https://wallpapercave.com/wp/wp12389554.jpg');
+  background-color: #171717;
+  background-size: 125% auto;
+  background-repeat: no-repeat;
+  background-fit: cover;
+  background-position: 170% 100%;
+  background-attachment: fixed;
+  color: #fff;
+}
+
+.main-box {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.sectionGrid {
+  color: #fff;
+  backdrop-filter: blur(20px);
+}
+
+.sectionGrid h2 {
+  color: #de005d;
+}
+
+.add-movie-button {
+  background-color: #de005d;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 18px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  position: fixed;
+  bottom: 60px;
+  right: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.add-movie-button:hover {
+  background-color: #ff5286;
+}

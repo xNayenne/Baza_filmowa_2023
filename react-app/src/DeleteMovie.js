@@ -28,6 +28,8 @@ const MovieDetails = () => {
         fetchMovieDetails();
     }, [id]);
 
+    
+
     if (!movieDetails) {
         return <p>Loading...</p>; //currently loading state cuz no movie deletion was implemented yet
     }
@@ -44,15 +46,15 @@ const MovieDetails = () => {
                 <table>
                     <tbody>
                     <tr>
-                        <td className="td">Aktorzy:</td>
+                        <td className="td">Actors:</td>
                         <td>{movieDetails.mainActors}</td>
                     </tr>
                     <tr>
-                        <td>Producent</td>
+                        <td>Producer:</td>
                         <td>{movieDetails.producer}</td>
                     </tr>
                     <tr>
-                        <td>Gatunek</td>
+                        <td>Genre:</td>
                         <td>{movieDetails.genre}</td>
                     </tr>
                     </tbody>

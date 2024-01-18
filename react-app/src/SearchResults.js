@@ -32,7 +32,7 @@ const SearchResults = () => {
     return (
         <div className="main-box add-movie-box">
             <div className="search-result-container">
-                <h2>Wyniki wyszukiwania dla: {query}</h2>
+                <h2>Search results for: {query}</h2>
                 {filteredMovies.length > 0 ? (
                     <ul>
                         {filteredMovies.map((movie) => (
@@ -48,7 +48,7 @@ const SearchResults = () => {
                         ))}
                     </ul>
                 ) : (
-                    <p id="no-results">Brak wyników dla podanego zapytania.</p>
+                    <p id="no-results">No matching result for your request.</p>
                 )}
             </div>
         </div>

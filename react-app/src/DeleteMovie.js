@@ -1,67 +1,95 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { useMovies } from "./MoviesContext";
-import { FaPlayCircle } from 'react-icons/fa';
-import axios from 'axios';
 import './styles/Delete.css';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
-const MovieDetails = () => {
-    const { id } = useParams();
-    const { setMovies } = useMovies();
-    const [movieDetails, setMovieDetails] = useState(null);
+const DeleteMovie = () => {
+    const navigate = useNavigate();
+    const [movies, setMovies] = useState([]);
+    const [formData, setFormData] = useState({
+        selectedMovieId: '',
+    });
 
     useEffect(() => {
-        const fetchMovieDetails = async () => {
+        const fetchData = async () => {
             try {
-                const response = await axios.get(`https://at.usermd.net/api/movies/${id}`);
-                if (!response.data) {
-                    throw new Error('Network response was not ok');
-                }
-
-                const movieDetailsData = response.data;
-                setMovieDetails(movieDetailsData);
+                const response = await axios.get('https://at.usermd.net/api/movies');
+                setMovies(response.data);
             } catch (error) {
-                console.error('Error fetching movie details:', error);
+                console.error('Error fetching data:', error);
             }
         };
 
-        fetchMovieDetails();
-    }, [id]);
+        fetchData();
+    }, []);
 
-    
+    const handleInputChange = (e) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value,
+        });
+    };
 
-    if (!movieDetails) {
-        return <p>Loading...</p>; //currently loading state cuz no movie deletion was implemented yet
-    }
+    const handleChangeRoute = () => {
+        navigate('/');
+        window.location.reload();
+    };
+
+    const handleDelete = async (event) => {
+        event.preventDefault();
+
+        if (!formData.selectedMovieId) {
+            return;
+        }
+
+        try {
+            const token = localStorage.getItem('token');
+
+            const headers = {
+                Authorization: `Bearer ${token}`
+            };
+
+            const response = await axios.delete(`https://at.usermd.net/api/movie/${formData.selectedMovieId}`, { headers });
+
+            if (!response.data) {
+                throw new Error('Network response was not ok');
+            }
+
+            handleChangeRoute();
+        } catch (error) {
+            console.error('Error deleting movie:', error);
+        }
+    };
 
     return (
-        <div className="main-box movie-box">
-            <div className="movie-box-first-column">
-                <img src={movieDetails.image} alt={movieDetails.title} />
-                {/*<button onClick="#"><FaPlayCircle />;</button>*/}
-            </div>
-            <div className="movie-box-second-column">
-                <h2>{movieDetails.title}</h2>
-                <p>{movieDetails.content}</p>
-                <table>
-                    <tbody>
-                    <tr>
-                        <td className="td">Actors:</td>
-                        <td>{movieDetails.mainActors}</td>
-                    </tr>
-                    <tr>
-                        <td>Producer:</td>
-                        <td>{movieDetails.producer}</td>
-                    </tr>
-                    <tr>
-                        <td>Genre:</td>
-                        <td>{movieDetails.genre}</td>
-                    </tr>
-                    </tbody>
-                </table>
+        <div className="main-box-delete-movie add-movie-box">
+            <div className="add-movie-container-delete-movie">
+                <h2 className="delete-movie-title">Delete movie</h2>
+                <form className="form-add-movie-delete-movie">
+                    <div className="form-global-delete-movie form-left-column-delete-movie">
+                        <p>Details</p>
+                        <select
+                            id="selectedMovieId"
+                            name="selectedMovieId"
+                            value={formData.selectedMovieId}
+                            onChange={handleInputChange}
+                            className="delete-movie-select"
+                        >
+                            <option value="">Select a movie you want to delete</option>
+                            {movies.map((movie) => (
+                                <option key={movie.id} value={movie.id}>
+                                    {movie.title}
+                                </option>
+                            ))}
+                        </select>
+                        <button type="submit" onClick={handleDelete} className="delete-movie-button">
+                            Delete movie
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     );
 };
 
-export default MovieDetails;
+export default DeleteMovie;

@@ -24,19 +24,52 @@ ul {
 }
 
 .link-element-item {
-  cursor: pointer;
-  padding: 10px;
-  margin: 10px 0;
-  border-radius: 4px;
-  transition: background-color 0.3s;
+    cursor: pointer;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    display: flex;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
 }
 
 .link-element-item:hover {
-  background-color: #de005d;
+  background-color: rgba(222, 0, 93, 0.5);
 }
 
 .link-element-item h4 {
   margin: 0;
+}
+
+.movie-details {
+    display: flex;
+}
+
+.movie-image img {
+    border-radius: 8px;
+    width: 180px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.movie-description {
+    flex: 1;
+}
+
+.movie-description h4 {
+    font-size: 32px;
+    color: #de005d;
+    margin: 0;
+}
+
+.movie-description p {
+    margin-top: 20px;
+    margin-right: 40px;
 }
 
 #no-results {

@@ -63,3 +63,35 @@
 .pagination button:hover {
   background-color: #ff5286;
 }
+
+.image-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.rating-container {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  color: orange;
+  font-size: 20px;
+  background-color: rgba(0, 0, 0, 1); /* Dodany półprzezroczysty pasek */
+  padding: 5px; /* Dodany padding dla lepszego wyglądu */
+  border-radius: 5px;
+  margin-bottom: 1px;/* Zaokrąglone rogi */
+}
+
+.rating span {
+  margin-left: 5px;
+}
+
+.star-icon {
+  font-size: 20px;
+  color: orange;
+}
+

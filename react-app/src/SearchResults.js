@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './styles/Search.css';
-import {useParams, useNavigate, Link} from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const SearchResults = () => {
     const { query } = useParams();
     const [movies, setMovies] = useState([]);
+    const [hoveredItemId, setHoveredItemId] = useState(null);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -25,6 +26,10 @@ const SearchResults = () => {
         navigate(`/details/${encodeURIComponent(title)}/${id}`);
     };
 
+    const handleHover = (itemId) => {
+        setHoveredItemId(itemId);
+    };
+
     const filteredMovies = movies.filter((movie) =>
         movie.title.toLowerCase().includes(query.toLowerCase())
     );
@@ -37,13 +42,22 @@ const SearchResults = () => {
                     <ul>
                         {filteredMovies.map((movie) => (
                             <li key={movie.id}>
-                                <div className="link-element-item" onClick={() => handleItem(movie.title, movie.id)}>
-                                    <h4 className="-link" >
-                                        {movie.title}
-                                    </h4>
-                                    <p>{movie.content}</p>
+                                <div
+                                    className={`link-element-item ${hoveredItemId === movie.id ? 'hovered' : ''}`}
+                                    onClick={() => handleItem(movie.title, movie.id)}
+                                    onMouseEnter={() => handleHover(movie.id)}
+                                    onMouseLeave={() => handleHover(null)}
+                                >
+                                    <div className="movie-details">
+                                        <div className="movie-image">
+                                            <img src={movie.image} alt={movie.title} />
+                                        </div>
+                                        <div className="movie-description">
+                                            <h4 className="-link">{movie.title}</h4>
+                                            <p>{movie.content}</p>
+                                        </div>
+                                    </div>
                                 </div>
-
                             </li>
                         ))}
                     </ul>

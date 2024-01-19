@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useMovies } from "./MoviesContext";
 import { FaPlayCircle } from 'react-icons/fa';
+import { FaStar } from 'react-icons/fa';
 import axios from 'axios';
 import './styles/Details.css';
 
@@ -33,23 +34,35 @@ const MovieDetails = () => {
     }
 
     return (
-        <div className="main-box-3 movie-box">
-            <div className="movie-box-first-column">
+        <div className="main-box-3 movie-details-box">
+            <div className="details-image-column">
                 <img src={movieDetails.image} alt={movieDetails.title} />
-                {/*<button onClick="#"><FaPlayCircle />;</button>*/}
             </div>
-            <div className="movie-box-second-column">
+            <div className="details-content-column">
                 <h2>{movieDetails.title}</h2>
                 <p>{movieDetails.content}</p>
+                <td className="td"></td>
+                <td>
+                    <div className="rating-container-2">
+                        <div className="rating-2">
+                            <FaStar className="star-icon-2" />
+                            <span>{movieDetails.rate}</span>
+                        </div>
+                    </div>
+                </td>
                 <table>
                     <tbody>
                     <tr>
-                        <td className="td">Actors:</td>
+                        <td className="details-td">Actors</td>
                         <td>{movieDetails.mainActors}</td>
                     </tr>
                     <tr>
                         <td>Producer</td>
                         <td>{movieDetails.producer}</td>
+                    </tr>
+                    <tr>
+                        <td>Production Year</td>
+                        <td>{movieDetails.productionYear}</td>
                     </tr>
                     <tr>
                         <td>Genre</td>

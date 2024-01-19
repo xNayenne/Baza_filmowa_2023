@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './styles/AddMovie.css';
 import {Link, useNavigate} from 'react-router-dom';
 import axios from 'axios';
+import { FaArrowRight } from 'react-icons/fa';
 
 const AddMovie = () => {
     const navigate = useNavigate();
@@ -82,12 +83,40 @@ const AddMovie = () => {
                             value={formData.content}
                             onChange={handleInputChange}
                         />
-                        <button type="submit" onClick={handleAdd}>
+                        <input
+                            type="text"
+                            id="rate"
+                            name="rate"
+                            placeholder="Rating"
+                            value={formData.rate}
+                            onChange={handleInputChange}
+                        />
+                        <input
+                            type="text"
+                            id="pubYear"
+                            name="productionYear"
+                            value={formData.productionYear}
+                            placeholder="Publication year"
+                            onChange={handleInputChange}
+                        />
+                        <input
+                            type="text"
+                            id="genre"
+                            name="genre"
+                            placeholder="Genre"
+                            value={formData.genre}
+                            onChange={handleInputChange}
+                        />
+                        <button className="add-movie-button-2" type="submit" onClick={handleAdd}>
                             Add movie
                         </button>
                     </div>
                 </form>
-                <Link to="/delete" className="login-link-text-gray">Delete Movie</Link>
+                <button className="add-movie-button-2" type="submit" onClick={handleAdd}>
+                    <Link to="/delete" className="login-link-text-gray">
+                      Delete Movie <span className="arrow-icon"><FaArrowRight /></span>
+                    </Link>
+                </button>
             </div>
         </div>
     );

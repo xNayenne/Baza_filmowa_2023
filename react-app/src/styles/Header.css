@@ -22,7 +22,8 @@
 }
 
 .search {
-  margin-left: 160px;
+  position: center;
+  position: justify-content;
 }
 
 .search input {

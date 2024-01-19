@@ -18,6 +18,7 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   margin-top: 50px;
   color: #000;
+  backdrop-filter: blur(20px);
 }
 
 .add-movie-container {
@@ -52,13 +53,14 @@ p {
 }
 
 textarea {
-  width: 99.5%;
+  width: 99.3%;
   padding: 10px;
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 4px;
   color: #000;
   margin-left: -10px;
+  margin-bottom: 4px;
 }
 
 button {
@@ -78,6 +80,25 @@ button:hover {
   background-color: #ff5286;
 }
 
+.add-movie-button-2 {
+  background-color: #de005d;
+  color: #fff;
+  padding: 12px;
+  width: 615px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.add-movie-button-2:hover {
+  background-color: #ff5286;
+}
+
+.arrow-icon {
+  margin-left: 5px; /* Dostosuj margines według potrzeb */
+}
+
 .login-link-text-gray {
-  color: #555;
+  color: #fff;
 }

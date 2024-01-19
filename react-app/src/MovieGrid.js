@@ -24,30 +24,37 @@ const MovieGrid = () => {
     };
 
     return (
-        <div className="movie-grid-box">
-            <div  className="movie-grid">
-                {currentMovies.map((movie) => (
-                    <div className="item" key={movie.id} onClick={() => handleItem(movie.title, movie.id)}>
-                        <img src={movie.image} alt={movie.title} />
-                        <h3>{movie.title}</h3>
-                    </div>
-                ))}
+      <div className="movie-grid-box">
+        <div className="movie-grid">
+          {currentMovies.map((movie) => (
+            <div className="item" key={movie.id} onClick={() => handleItem(movie.title, movie.id)}>
+              <div className="image-container">
+                <img src={movie.image} alt={movie.title} />
+                <div className="rating-container">
+                  <div className="rating">
+                    <FaStar className="star-icon" />
+                    <span>{movie.rate ?? '0.0'}</span>
+                  </div>
+                </div>
+              </div>
+              <h3>{movie.title}</h3>
             </div>
-            <div className="pagination">
-                {Array.from({ length: Math.ceil(movies.length / moviesPerPage) }, (_, index) => (
-                    <button
-                        key={index + 1}
-                        onClick={() => handlePageChange(index + 1)}
-                        className={currentPage === index + 1 ? 'active' : ''}
-                    >
-                        {index + 1}
-                    </button>
-                ))}
-            </div>
-
+          ))}
         </div>
-
+        <div className="pagination">
+          {Array.from({ length: Math.ceil(movies.length / moviesPerPage) }, (_, index) => (
+            <button
+              key={index + 1}
+              onClick={() => handlePageChange(index + 1)}
+              className={currentPage === index + 1 ? 'active' : ''}
+            >
+              {index + 1}
+            </button>
+          ))}
+        </div>
+      </div>
     );
+
 };
 
 export default MovieGrid;
